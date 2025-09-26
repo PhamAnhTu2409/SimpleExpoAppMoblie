@@ -113,9 +113,9 @@ export default function HomeScreen() {
         <ThemedView style={styles.sectionContainer}>
           <ThemedView style={styles.sectionHeader}>
             <ThemedText type="subtitle">Sản Phẩm Nổi Bật</ThemedText>
-
-            <ThemedText style={styles.seeAllText}>Xem tất cả</ThemedText>
-
+            <Link href="/product" asChild>
+              <ThemedText style={styles.seeAllText}>Xem tất cả</ThemedText>
+            </Link>
           </ThemedView>
 
           <FlatList
@@ -125,26 +125,30 @@ export default function HomeScreen() {
             scrollEnabled={false} // FlatList nằm trong ScrollView
             columnWrapperStyle={styles.columnWrapper}
             renderItem={({ item }) => (
-              <Link
-                key={item.id}
-                href={`/products/${item.id}`}
-                asChild
-              >
-                <ThemedView style={styles.productCard}>
-                  <Image source={item.image} style={styles.productImage} contentFit="cover" />
-                  <ThemedView style={styles.productInfo}>
-                    <ThemedView style={styles.productHeader}>
-                      <ThemedText style={styles.productName}>{item.name}</ThemedText>
-                      <ThemedView style={styles.ratingContainer}>
-                        <Ionicons name="star" size={16} color="#FFD700" />
-                        <ThemedText style={styles.rating}>{item.rating}</ThemedText>
-                      </ThemedView>
+              <ThemedView style={styles.productCard}>
+                <Image
+                  source={item.image}
+                  style={styles.productImage}
+                  contentFit="cover"
+                />
+                <ThemedView style={styles.productInfo}>
+                  <ThemedView style={styles.productHeader}>
+                    <ThemedText style={styles.productName}>{item.name}</ThemedText>
+                    <ThemedView style={styles.ratingContainer}>
+                      <Ionicons name="star" size={16} color="#FFD700" />
+                      <ThemedText style={styles.rating}>{item.rating}</ThemedText>
                     </ThemedView>
-
-                    <ThemedText style={styles.productPrice}>{item.price}</ThemedText>
                   </ThemedView>
+
+                  <ThemedText style={styles.productPrice}>{item.price}</ThemedText>
+                  <Link href="/product" asChild>
+                    <TouchableOpacity style={styles.viewDetailButton}>
+                      <ThemedText style={styles.buttonText}>Xem Chi Tiết</ThemedText>
+                      <Ionicons name="arrow-forward" size={16} color="white" />
+                    </TouchableOpacity>
+                  </Link>
                 </ThemedView>
-              </Link>
+              </ThemedView>
             )}
           />
         </ThemedView>

@@ -14,29 +14,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack
-        screenOptions={{
-          headerShown: false,   // Ẩn header mặc định
-          gestureEnabled: true, // Vuốt sang phải để back (iOS mặc định, Android cũng hỗ trợ)
-        }}
-      >
-        {/* Tabs chính */}
+      <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
-        {/* Màn hình modal
-        <Stack.Screen
-          name="modal"
-          options={{ presentation: 'modal', title: 'Modal' }}
-        /> */}
-
-        {/* Màn hình chi tiết sản phẩm (dynamic route) */}
-        <Stack.Screen
-          name="product/[id]"
-          options={{
-            headerShown: false, // Tự custom UI back
-            gestureEnabled: true,
-          }}
-        />
+        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

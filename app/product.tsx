@@ -3,6 +3,7 @@ import { ThemedView } from '@/components/themed-view';
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { ScrollView, StyleSheet, TouchableOpacity, View, Alert } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ProductDetailScreen() {
   const product = {
@@ -26,6 +27,7 @@ export default function ProductDetailScreen() {
   };
 
   return (
+    <SafeAreaView style={styles.container}>
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
       {/* Ảnh sản phẩm */}
       <Image source={product.image} style={styles.productImage} contentFit="cover" />
@@ -68,6 +70,7 @@ export default function ProductDetailScreen() {
         </TouchableOpacity>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
